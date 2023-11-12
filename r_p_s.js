@@ -1,37 +1,50 @@
+//function getPlayerChoice - done
+//function getComputerChoice - done
+//function to compare choices - done
 //function game()
-//function getComputerChoice
-//function getPlayerChoice
 //function playRound
-//function to compare choices
 //score count
 
+//const prompt = require("prompt-sync")();
+
+let playerChoice = getPlayerChoice();
+
 function getPlayerChoice() {
-   let playerInput = prompt("Choose rock, paper or scissors".toLowerCase());
-   return playerInput;
+   let playerInput = prompt("Choose rock, paper or scissors: ");
+   return playerInput.toLowerCase();
 };
-console.log("You chose " + prompt());
+
+console.log(`You chose: ${playerChoice}`);
+
+let computerChoice = getComputerChoice();
 
 function getComputerChoice() {
-   const randomChoice = (Math.floor(Math.random() * 3));
-   if (randomChoice === 0 ) {
-      return "rock";
-   } else if (randomChoice === 1 ) {
-      return "paper";
-   } else if (randomChoice === 2 ) {
-      return "scissors";
-   }
-};
-console.log("Computer chose " + getComputerChoice());
-
+   let choices = ["rock", "paper", "scissors"];
+   let randomChoice = choices[Math.floor(Math.random(choices) * choices.length)];
+   return randomChoice;
+   };
+ 
+console.log(`Computer chose: ${computerChoice}`)
 
 function compareChoices(playerChoice, computerChoice) {
+
    if (playerChoice === computerChoice) {
-      return "Draw";
+      console.log("Draw");
    }
-   if ((playerChoice === 'rock' && computerChoice === 'scissors') ||
-      (playerChoice === 'scissors' && computerChoice === 'paper') ||
-      (playerChoice === 'paper' && computerChoice === 'rock')) {
-      return "You win";
+   else if
+      ((playerChoice === "rock" && computerChoice === "scissors") ||
+      (playerChoice === "scissors" && computerChoice === "paper") ||
+      (playerChoice === "paper" && computerChoice === "rock")) {
+      console.log("You win");
    } 
-   return "Computer wins";
-};
+   else {
+      console.log("Computer wins");
+   }
+}; 
+
+compareChoices(playerChoice, computerChoice);
+
+
+
+
+
