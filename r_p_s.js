@@ -1,50 +1,65 @@
 //function getPlayerChoice - done
 //function getComputerChoice - done
 //function to compare choices - done
-//function game()
-//function playRound
+//function game() -done
+//function playRound -done
 //score count
 
-//const prompt = require("prompt-sync")();
+const prompt = require("prompt-sync")();
 
-let playerChoice = getPlayerChoice();
+const choices = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
 function getPlayerChoice() {
-   let playerInput = prompt("Choose rock, paper or scissors: ");
-   return playerInput.toLowerCase();
+   let playerInput = false;
+   while(playerInput == false){
+       const choice = prompt("Chose rock, paper or scissors: ");
+       if(choice == null){
+           continue;
+       }
+       const choiceInLower = choice.toLowerCase();
+       if(choices.includes(choiceInLower)){
+           playerInput = true;
+           return choiceInLower;
+       }
+   } 
 };
 
-console.log(`You chose: ${playerChoice}`);
-
-let computerChoice = getComputerChoice();
-
 function getComputerChoice() {
-   let choices = ["rock", "paper", "scissors"];
    let randomChoice = choices[Math.floor(Math.random(choices) * choices.length)];
    return randomChoice;
    };
  
-console.log(`Computer chose: ${computerChoice}`)
-
 function compareChoices(playerChoice, computerChoice) {
 
    if (playerChoice === computerChoice) {
-      console.log("Draw");
+
+      console.log("\nIt's a draw.");
    }
    else if
       ((playerChoice === "rock" && computerChoice === "scissors") ||
       (playerChoice === "scissors" && computerChoice === "paper") ||
       (playerChoice === "paper" && computerChoice === "rock")) {
-      console.log("You win");
+      playerScore++
+      console.log(`\nPlayer chose: ${playerChoice}`);
+      console.log("Player: " + playerScore);
    } 
    else {
-      console.log("Computer wins");
+      computerScore++
+      console.log(`\nComputer chose: ${computerChoice}`);
+      console.log("Computer: " + computerScore);
    }
 }; 
 
-compareChoices(playerChoice, computerChoice);
-
-
+function game() {
+   for (let i = 0; i < 5; i++) {
+      let playerSelection = getPlayerChoice();
+      let computerSelection = getComputerChoice();
+      compareChoices(playerSelection, computerSelection);
+   }
+};
+game();
 
 
 
