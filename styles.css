@@ -1,0 +1,24 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+
+#rock,
+#paper,
+#scissors {
+    border: solid darkgray;
+    height: 80px;
+    width: 80px;
+    font-size: 60px;
+    color: grey;
+    background-color: aliceblue;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
