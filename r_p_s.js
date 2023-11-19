@@ -1,13 +1,55 @@
-//function getPlayerChoice - done
-//function getComputerChoice - done
-//function to compare choices - done
-//function game() -done
-//function playRound -done
-//score count
 
-const prompt = require("prompt-sync")();
-
+const playerChoiceDisplay = document.getElementById('player-choice');
+const computerChoiceDisplay = document.getElementById('computer-choice');
+const resultDisplay = document.getElementById('result');
+const buttonChoices = document.querySelectorAll('button');
 const choices = ["rock", "paper", "scissors"];
+let playerChoice
+let computerChoice
+
+buttonChoices.forEach(buttonChoice => buttonChoice.addEventListener('click', (e) => {
+   playerChoice = e.target.id
+   playerChoiceDisplay.innerHTML = playerChoice
+   getComputerChoice();
+   compareChoices();
+}));
+
+function getComputerChoice() {
+   computerChoice = choices[Math.floor(Math.random(choices) * choices.length)];
+   computerChoiceDisplay.innerHTML = computerChoice
+   };
+
+function compareChoices() {
+
+   if (playerChoice === computerChoice) {
+      result = "It's a draw!"
+   }
+   if
+      ((playerChoice === "rock" && computerChoice === "scissors") ||
+      (playerChoice === "scissors" && computerChoice === "paper") ||
+      (playerChoice === "paper" && computerChoice === "rock")) {
+      result = "You win!" 
+   } 
+   if ((computerChoice === "rock" && playerChoice === "scissors") ||
+      (computerChoice === "scissors" && playerChoice === "paper") ||
+      (computerChoice === "paper" && playerChoice === "rock")) {
+      result = "Computer wins!"  
+   }
+   resultDisplay.innerHTML = result
+}; 
+
+
+
+
+
+
+
+
+
+
+
+
+/*const choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
@@ -35,20 +77,18 @@ function compareChoices(playerChoice, computerChoice) {
 
    if (playerChoice === computerChoice) {
 
-      console.log("\nIt's a draw.");
+     
    }
    else if
       ((playerChoice === "rock" && computerChoice === "scissors") ||
       (playerChoice === "scissors" && computerChoice === "paper") ||
       (playerChoice === "paper" && computerChoice === "rock")) {
       playerScore++
-      console.log(`\nPlayer chose: ${playerChoice}`);
-      console.log("Player: " + playerScore);
+     
    } 
    else {
       computerScore++
-      console.log(`\nComputer chose: ${computerChoice}`);
-      console.log("Computer: " + computerScore);
+      
    }
 }; 
 
@@ -60,6 +100,7 @@ function game() {
    }
 };
 game();
+*/
 
 
 
