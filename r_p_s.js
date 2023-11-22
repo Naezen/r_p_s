@@ -1,11 +1,15 @@
-
 const playerChoiceDisplay = document.getElementById('player-choice');
 const computerChoiceDisplay = document.getElementById('computer-choice');
 const resultDisplay = document.getElementById('result');
 const buttonChoices = document.querySelectorAll('button');
+const playerScoreDisplay = document.getElementById('player-score');
+const computerScoreDisplay = document.getElementById('computer-score');
+const gameDisplay = document.getElementById('game-display');
 const choices = ["rock", "paper", "scissors"];
-let playerChoice
-let computerChoice
+let playerScore = 0;
+let computerScore = 0; 
+let playerChoice;
+let computerChoice;
 
 buttonChoices.forEach(buttonChoice => buttonChoice.addEventListener('click', (e) => {
    playerChoice = e.target.id
@@ -20,87 +24,37 @@ function getComputerChoice() {
    };
 
 function compareChoices() {
-
+   
+   var game = ""
    if (playerChoice === computerChoice) {
-      result = "It's a draw!"
+       result = "It's a draw."
    }
    if
       ((playerChoice === "rock" && computerChoice === "scissors") ||
       (playerChoice === "scissors" && computerChoice === "paper") ||
       (playerChoice === "paper" && computerChoice === "rock")) {
-      result = "You win!" 
+         result = `You win! ${playerChoice} beats ${computerChoice}.` 
+      playerScore +=1;
+      
+      if (playerScore == 5) {
+         var game = "Congratulations! You win the game!"
+      }
+       
    } 
    if ((computerChoice === "rock" && playerChoice === "scissors") ||
       (computerChoice === "scissors" && playerChoice === "paper") ||
       (computerChoice === "paper" && playerChoice === "rock")) {
-      result = "Computer wins!"  
+         result = `Computer wins! ${computerChoice} beats ${playerChoice}.`
+      computerScore +=1;
+
+      if (computerScore == 5) {
+         var game = "Game over. Computer wins."
+      }
    }
    resultDisplay.innerHTML = result
+   playerScoreDisplay.innerHTML = playerScore
+   computerScoreDisplay.innerHTML = computerScore
+   gameDisplay.innerHTML = game
+   console.log("player " + playerScore);
+   console.log("cpu    " + computerScore);
 }; 
-
-
-
-
-
-
-
-
-
-
-
-
-/*const choices = ["rock", "paper", "scissors"];
-let playerScore = 0;
-let computerScore = 0;
-
-function getPlayerChoice() {
-   let playerInput = false;
-   while(playerInput == false){
-       const choice = prompt("Chose rock, paper or scissors: ");
-       if(choice == null){
-           continue;
-       }
-       const choiceInLower = choice.toLowerCase();
-       if(choices.includes(choiceInLower)){
-           playerInput = true;
-           return choiceInLower;
-       }
-   } 
-};
-
-function getComputerChoice() {
-   let randomChoice = choices[Math.floor(Math.random(choices) * choices.length)];
-   return randomChoice;
-   };
- 
-function compareChoices(playerChoice, computerChoice) {
-
-   if (playerChoice === computerChoice) {
-
-     
-   }
-   else if
-      ((playerChoice === "rock" && computerChoice === "scissors") ||
-      (playerChoice === "scissors" && computerChoice === "paper") ||
-      (playerChoice === "paper" && computerChoice === "rock")) {
-      playerScore++
-     
-   } 
-   else {
-      computerScore++
-      
-   }
-}; 
-
-function game() {
-   for (let i = 0; i < 5; i++) {
-      let playerSelection = getPlayerChoice();
-      let computerSelection = getComputerChoice();
-      compareChoices(playerSelection, computerSelection);
-   }
-};
-game();
-*/
-
-
-
